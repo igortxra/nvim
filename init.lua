@@ -1,0 +1,6 @@
+require "igortxra.options"
+require "igortxra.colorscheme"
+require "igortxra.plugins"
+require "igortxra.keymaps"
+require "igortxra.lsp"
+require "igortxra.dap"
