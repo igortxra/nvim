@@ -49,12 +49,9 @@ return packer.startup(function(use)
  ------------- MY PLUGINS ---------------
 
   -- Colorschemes
-  use { 
-    "lunarvim/colorschemes",
-    config  = function()
-      vim.cmd("colorscheme darkplus")
-    end
-  }
+  use 'Mofiqul/dracula.nvim'
+
+  use "lunarvim/colorschemes"
 
   -- NvimTree
   use {
@@ -63,7 +60,7 @@ return packer.startup(function(use)
       'nvim-tree/nvim-web-devicons', -- optional, for file icons
     },
     tag = 'nightly', -- optional, updated every week. (see issue #1193)
-    config = function() 
+    config = function()
       require("nvim-tree").setup{
       respect_buf_cwd = true,
       view = {
