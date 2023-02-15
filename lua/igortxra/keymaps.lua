@@ -39,7 +39,7 @@ keymap("n", "<leader>x", "<cmd>!chmod +x %<CR>", term_opts)
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>hzz", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
-keymap("n", "<C-k>", "<C-w>kzz", opts)
+keymap("n", "<C-k>", "<C-w>kzz", opts    )
 keymap("n", "<C-l>", "<C-w>lzz", opts)
 
 -- Better terminal navigation
