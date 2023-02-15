@@ -38,7 +38,7 @@ keymap("n", "<leader>x", "<cmd>!chmod +x %<CR>", term_opts)
 -----------------
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>hzz", opts)
-keymap("n", "<C-j>", "<C-w>jzz", opts)
+keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>kzz", opts)
 keymap("n", "<C-l>", "<C-w>lzz", opts)
 
@@ -132,4 +132,11 @@ keymap('n', '<leader>gk', ":Gitsigns prev_hunk<cr>", opts)
 keymap('n', '<leader>gj', ":Gitsigns next_hunk<cr>", opts)
 keymap('n', '<leader>gb', ":Gitsigns blame_line<cr>", opts)
 keymap('n', '<leader>gd', ":Gitsigns diffthis<cr>", opts)
+
+-- ToggleTerm --
+keymap('n', '<C-t>', ':ToggleTerm<cr>', opts)
+keymap("t", "<C-t>", "<C-\\><C-N><C-w>l", term_opts)
+keymap("t", "H", "H", term_opts)
+keymap("t", "L", "L", term_opts)
+keymap("n", "<leader>tm", ":lua _HTOP_TOGGLE()<cr>", opts)
 

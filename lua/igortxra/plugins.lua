@@ -103,16 +103,17 @@ return packer.startup(function(use)
   }
 
   -- Treesitter
+  use {"JoosepAlviste/nvim-ts-context-commentstring"}
   use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate',
-    config = function() 
+    config = function()
       require("nvim-treesitter.configs").setup {
         -- Automatically install missing parsers when entering buffer
         -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
         auto_install = true,
 
-       ensure_installed = "all",
+        ensure_installed = "all",
         sync_install = false,
         ignore_install = { "" }, -- List of parsers to ignore installing
         highlight = {
@@ -120,8 +121,9 @@ return packer.startup(function(use)
           disable = { "" }, -- list of language that will be disabled
           additional_vim_regex_highlighting = true,
 
-  },
-  indent = { enable = true, disable = { "yaml" } },
+        },
+        indent = { enable = true, disable = { "yaml" } },
+        context_commentstring = { enable = true }
 
       }
     end
@@ -171,11 +173,13 @@ return packer.startup(function(use)
         sections = {
           lualine_a = {'mode'},
           lualine_b = {'branch', 'diff', 'diagnostics'},
-          lualine_c = {'filename'},
+          lualine_c = {'%f'},
           lualine_x = {'encoding', 'fileformat', 'filetype'},
           lualine_y = {'progress'},
           lualine_z = {'location'}
-        }}
+        },
+        inactive_sections = {}
+      }
       end
     }
 
@@ -203,14 +207,6 @@ return packer.startup(function(use)
     }
   }
 
-  use {
-    's1n7ax/nvim-terminal',
-    config = function()
-      vim.o.hidden = true
-      require('nvim-terminal').setup()
-    end,
-  }
-
   -- Autopairs
   use {
     "windwp/nvim-autopairs",
@@ -218,6 +214,81 @@ return packer.startup(function(use)
       disable_filetype = {"TelescopePrompt"}
     } end
   }
+
+  -- ToggleTerm
+  use {"akinsho/toggleterm.nvim", tag = '*', config = function()
+    local toggleterm = require("toggleterm")
+    toggleterm.setup({
+      size=70,
+      direction = "float",
+      float_opts = {
+        border = "curved",
+        winblend = 0,
+        highlights = {
+          border = "Normal",
+          background = "Normal"
+        }
+      }
+    })
+
+    local Terminal = require("toggleterm.terminal").Terminal
+
+    local htop = Terminal:new({ cmd = "htop", hidden = true })
+    function _HTOP_TOGGLE()
+      htop:toggle()
+    end
+  end}
+
+  -- Comments
+  use {
+    'numToStr/Comment.nvim',
+    config = function()
+      require('Comment').setup({
+        ---Add a space b/w comment and the line
+        padding = true,
+        ---Whether the cursor should stay at its position
+        sticky = true,
+        ---Lines to be ignored while (un)comment
+        ignore = nil,
+        ---LHS of toggle mappings in NORMAL mode
+        toggler = {
+          ---Line-comment toggle keymap
+          line = '<leader>kc',
+          ---Block-comment toggle keymap
+          block = '<leader>kb',
+        },
+        ---LHS of operator-pending mappings in NORMAL and VISUAL mode
+        opleader = {
+          ---Line-comment keymap
+          line = '<leader>kc',
+          ---Block-comment keymap
+          block = '<leader>kb',
+        },
+        ---LHS of extra mappings
+        extra = {
+          ---Add comment on the line above
+          above = '<leader>kO',
+          ---Add comment on the line below
+          below = '<leader>ko',
+          ---Add comment at the end of line
+          eol = '<leader>kA',
+        },
+        ---Enable keybindings
+        ---NOTE: If given `false` then the plugin won't create any mappings
+        mappings = {
+          ---Operator-pending mapping; `gcc` `gbc` `gc[count]{motion}` `gb[count]{motion}`
+          basic = true,
+          ---Extra mapping; `gco`, `gcO`, `gcA`
+          extra = true,
+        },
+        ---Function to call before (un)comment
+        pre_hook = nil,
+        ---Function to call after (un)comment
+        post_hook = nil,
+      })
+    end
+  }
+
   ---------------- MY PLUGINS END --------------------
 
   -- Automatically set up your configuration after cloning packer.nvim
