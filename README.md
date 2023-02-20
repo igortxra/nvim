@@ -1,6 +1,10 @@
 # nvim
 My neovim setup
 
+# Requirements
+- npm
+- ripgrep
+
 # How to use this configuration
 ```bash
 cd ~/.config/nvim
