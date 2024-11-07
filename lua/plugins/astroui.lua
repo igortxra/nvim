@@ -9,16 +9,9 @@ return {
   ---@type AstroUIOpts
   opts = {
     -- change colorscheme
-    colorscheme = "everforest",
+    colorscheme = "dracula",
     -- AstroUI allows you to easily modify highlight groups easily for any and all colorschemes
     highlights = {
-      init = { -- this table overrides highlights in all themes
-        Normal = { bg = "none" },
-        NormalNC = { bg = "none" },
-        NeoTreeNormal = { bg = "none" },
-        NeoTreeNormalNC = { bg = "none" },
-        NeoTreeEndOfBuffer  = { bg = "none" },
-      },
       astrodark = { -- a table of overrides/changes when applying the astrotheme theme
         -- Normal = { bg = "#000000" },
       },
