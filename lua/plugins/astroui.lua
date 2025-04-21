@@ -16,12 +16,12 @@ return {
         -- Normal = { bg = "#000000" },
       },
       dracula = { -- a table of overrides/changes when applying the astrotheme theme
-         Normal = { bg = "#111112" },
-         NormalNC = { bg = "#111112" },
-         NeoTreeNormal = { bg = "#111112" },
-         NeoTreeNormalNC = { bg = "#111112" },
-         TelescopeNormal = { bg = "#111112" },
-         TelescopeNormalNC = { bg = "#111112" },
+        Normal = { bg = "#111112" },
+        NormalNC = { bg = "#111112" },
+        NeoTreeNormal = { bg = "#111112" },
+        NeoTreeNormalNC = { bg = "#111112" },
+        TelescopeNormal = { bg = "#111112" },
+        TelescopeNormalNC = { bg = "#111112" },
       },
     },
     -- Icons can be configured throughout the interface
