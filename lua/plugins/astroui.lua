@@ -9,13 +9,10 @@ return {
   ---@type AstroUIOpts
   opts = {
     -- change colorscheme
-    colorscheme = "dracula",
     -- AstroUI allows you to easily modify highlight groups easily for any and all colorschemes
+    colorscheme = "dracula",
     highlights = {
-      astrodark = { -- a table of overrides/changes when applying the astrotheme theme
-        -- Normal = { bg = "#000000" },
-      },
-      dracula = { -- a table of overrides/changes when applying the astrotheme theme
+      init = { -- a table of overrides/changes when applying the astrotheme theme
         NotifyBackground = { bg = "#111111" },
         Normal = { bg = nil },
         NormalNC = { bg = nil },
